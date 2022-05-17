@@ -16,3 +16,11 @@ strong {
 label {
     color: gray;
 }
+
+.btn {
+    padding: 5px 30px;
+}
+
+.btn-primary {
+    background-color: #006AB6;
+}
