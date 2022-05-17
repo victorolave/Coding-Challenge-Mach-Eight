@@ -10,12 +10,36 @@ const App = () => {
 
     const [players, setPlayers] = useState([]);
     const [height, setHeight] = useState(null);
+    const [pairs, setPairs] = useState([]);
 
     const getPlayers = async () => {
         await axios.get('https://mach-eight.uc.r.appspot.com')
             .then(response => {
                 setPlayers(response.data.values);
             })
+    }
+
+    const find = () => {
+
+        let map = new Map();
+
+        let pairs = [];
+
+        for (let i = 0; i < players.length; i++) {
+
+            let temp = height - players[i].h_in;
+
+            // Checking for condition.
+            if (map.has(temp.toString())) {
+                pairs.push({
+                    playerA: players[i],
+                    playerB: map.get(temp.toString())
+                })
+            }
+            map.set(players[i].h_in, players[i]);
+        }
+
+        setPairs(pairs);
     }
 
     useEffect(() => {
@@ -42,9 +66,9 @@ const App = () => {
                                         <Label for="user_height">
                                             Enter the height you are looking for (in)
                                         </Label>
-                                        <Input className="text-center" id="user_height" name="user_height"
+                                        <Input value={height} onChange={(e) => setHeight(e.target.value)} className="text-center" id="user_height" name="user_height"
                                                placeholder="Ex: 100 in" type="number"/>
-                                        <Button className="mt-2" color="primary"> Search </Button>
+                                        <Button onClick={find} className="mt-2" color="primary"> Search </Button>
                                     </Col>
                                 </Row>
                             </FormGroup>
@@ -52,9 +76,11 @@ const App = () => {
                             <br/>
 
                             <h1>Results</h1>
-                            <p>Results</p>
+                            <p>{ pairs.length > 0 ? 'There are a total of ' + pairs.length +' pairs whose combined heights total ' + height : 'No matches found' }</p>
 
-                            <Pair/>
+                            {
+                                pairs.map(pair => <Pair pair={pair} />)
+                            }
                         </CardBody>
                     </Card>
                 </Col>

@@ -9,7 +9,7 @@ h1 {
     font-weight: bolder;
 }
 
-strong {
+strong, small {
     color: #006AB6;
 }
 
@@ -24,3 +24,4 @@ label {
 .btn-primary {
     background-color: #006AB6;
 }
+
