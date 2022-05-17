@@ -11,6 +11,7 @@ const App = () => {
     const [players, setPlayers] = useState([]);
     const [height, setHeight] = useState(null);
     const [pairs, setPairs] = useState([]);
+    const [showResults, setShowResults] = useState(false);
 
     const getPlayers = async () => {
         await axios.get('https://mach-eight.uc.r.appspot.com')
@@ -40,11 +41,17 @@ const App = () => {
         }
 
         setPairs(pairs);
+        setShowResults(true);
     }
 
     useEffect(() => {
        getPlayers();
-    }, [])
+    }, []);
+
+    useEffect(() => {
+        setShowResults(false);
+        setPairs([]);
+    }, [height]);
 
     return (
         <Container>
@@ -75,11 +82,15 @@ const App = () => {
 
                             <br/>
 
-                            <h1>Results</h1>
-                            <p>{ pairs.length > 0 ? 'There are a total of ' + pairs.length +' pairs whose combined heights total ' + height : 'No matches found' }</p>
-
                             {
-                                pairs.map(pair => <Pair pair={pair} />)
+                                showResults ? <>
+                                    <h1>Results</h1>
+                                    <p>{ pairs.length > 0 ? 'There are a total of ' + pairs.length +' pairs whose combined heights total ' + height : 'No matches found' }</p>
+
+                                    {
+                                        pairs.map(pair => <Pair pair={pair} />)
+                                    }
+                                </> : <></>
                             }
                         </CardBody>
                     </Card>
