@@ -9,10 +9,19 @@ h1 {
     font-weight: bolder;
 }
 
-strong {
+strong, small {
     color: #006AB6;
 }
 
 label {
     color: gray;
 }
+
+.btn {
+    padding: 5px 30px;
+}
+
+.btn-primary {
+    background-color: #006AB6;
+}
+
