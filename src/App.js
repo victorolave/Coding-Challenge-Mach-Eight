@@ -1,18 +1,38 @@
 import {useEffect, useState} from "react";
-import {Button, Card, CardBody, Col, Container, FormGroup, Input, Label, Row} from "reactstrap";
 
 // Images
 import nba from './assets/images/nba.png';
+
+// Components
 import Pair from "./components/Pair";
+import {Button, Card, CardBody, Col, Container, FormGroup, Input, Label, Row} from "reactstrap";
+
+// Libraries
 import axios from "axios";
 
+/**
+ * @description Main component
+ * @returns {JSX.Element}
+ * @constructor
+ */
 const App = () => {
 
+    // Array of all NBA players
     const [players, setPlayers] = useState([]);
+
+    // State to handle user input
     const [height, setHeight] = useState(null);
+
+    // Array with the couples that meet the condition
     const [pairs, setPairs] = useState([]);
+
+    // State to handle when results are displayed
     const [showResults, setShowResults] = useState(false);
 
+    /**
+     * @description Method to get api data with the nba players.
+     * @returns {Promise<void>}
+     */
     const getPlayers = async () => {
         await axios.get('https://mach-eight.uc.r.appspot.com')
             .then(response => {
@@ -20,6 +40,9 @@ const App = () => {
             })
     }
 
+    /**
+     * @description Method to find the player pairs.
+     */
     const find = () => {
 
         let map = new Map();

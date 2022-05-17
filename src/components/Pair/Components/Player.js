@@ -1,6 +1,12 @@
 import React from "react";
 import {Card, CardBody, Col, Row} from "reactstrap";
 
+/**
+ * @description Component for show player data.
+ * @param player
+ * @returns {JSX.Element}
+ * @constructor
+ */
 const Player = ({ player }) => {
     return (
         <Card>

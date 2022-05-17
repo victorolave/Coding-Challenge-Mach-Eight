@@ -2,6 +2,12 @@ import React from "react";
 import {Col, Row} from "reactstrap";
 import Player from "./Components/Player";
 
+/**
+ * @description Component to show the pair of players that meet the condition.
+ * @param pair
+ * @returns {JSX.Element}
+ * @constructor
+ */
 const Pair = ({ pair }) => {
     return (
         <Row className="mt-4">
