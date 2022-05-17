@@ -2,6 +2,7 @@ import {Card, CardBody, Col, Container, FormGroup, Input, Label, Row} from "reac
 
 // Images
 import nba from './assets/images/nba.png';
+import Pair from "./components/Pair";
 
 const App = () => {
   return (
@@ -33,47 +34,7 @@ const App = () => {
                   <h1>Results</h1>
                   <p>Results</p>
 
-                  <Row className="mt-4">
-                      <Col md={5}>
-                          <Card>
-                              <CardBody>
-                                  <small>Name:</small>
-                                  <h4>Jugador</h4>
-                                  <Row>
-                                      <Col md={6}>
-                                          <small>Height (in):</small>
-                                          <h5>000 in</h5>
-                                      </Col>
-                                      <Col md={6}>
-                                          <small>Height (m):</small>
-                                          <h5>0.00 m</h5>
-                                      </Col>
-                                  </Row>
-                              </CardBody>
-                          </Card>
-                      </Col>
-                      <Col md={2} className="align-items-center">
-                          <h1>+</h1>
-                      </Col>
-                      <Col md={5}>
-                          <Card>
-                              <CardBody>
-                                  <small>Name:</small>
-                                  <h4>Jugador</h4>
-                                  <Row>
-                                      <Col md={6}>
-                                          <small>Height (in):</small>
-                                          <h5>000 in</h5>
-                                      </Col>
-                                      <Col md={6}>
-                                          <small>Height (m):</small>
-                                          <h5>0.00 m</h5>
-                                      </Col>
-                                  </Row>
-                              </CardBody>
-                          </Card>
-                      </Col>
-                  </Row>
+                  <Pair />
               </CardBody>
           </Card>
         </Col>
