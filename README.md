@@ -1,6 +1,4 @@
-# Mach Eight | Code Challenge
-
-This project is a coding challenge that serves as a technical test for Mach Eight.
+# NBA FINDER
 
 ## Description
 
